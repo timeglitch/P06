@@ -12,25 +12,24 @@ public class PathUtils {
 
     }
 
-    public static ArrayList<Path> notfindAllPaths(Intersection start, Intersection end) {
+    private static ArrayList<Path> notfindAllPaths(Intersection start, Intersection end) {
         ArrayList<Path> paths = new ArrayList<Path>();
         
-        if(start.getX() > end.getX() && start.getY() > end.getY()) {
+        if(start.getX() > end.getX() || start.getY() > end.getY()) {
             return paths;
         }
-        
+
         if(start.equals(end)) {
             Path base = new Path();
-            base.addHead(end);
             paths.add(base);
         }
         
         if(start.getX() < end.getX()) {
-            ArrayList<Path> xpaths = notfindAllPaths(start.goEast(), end);
+            ArrayList<Path> xpaths = findAllPaths(start.goEast(), end);
             paths.addAll(xpaths);
         }
         if(start.getY() < end.getY()) {
-            ArrayList<Path> ypaths = notfindAllPaths(start.goNorth(), end);
+            ArrayList<Path> ypaths = findAllPaths(start.goNorth(), end);
             paths.addAll(ypaths);        
         }
         for (Path path : paths) {
