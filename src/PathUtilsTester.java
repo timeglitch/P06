@@ -19,7 +19,7 @@ public class PathUtilsTester {
         endY = keyboard.nextInt();
         Intersection start = new Intersection(startX, startY);
         Intersection end = new Intersection(endX, endY);
-        //111System.out.println("Number of paths from start to end: " + PathUtils.countPaths(start, end));
+        System.out.println("Number of paths from start to end: " + PathUtils.countPaths(start, end));
         System.out.println("List of possible paths:");
         for (Path p : PathUtils.findAllPaths(start, end)) {
         System.out.println(p);

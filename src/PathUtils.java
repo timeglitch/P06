@@ -8,7 +8,13 @@ public class PathUtils {
     }
 
     public static int countPaths(Intersection start, Intersection end) {
-        return notfindAllPaths(start, end).size(); //TODO do this properly
+        if(end.getX() < start.getX() || end.getY() < start.getY()) {
+            return 0;
+        }
+        if(end.equals(start)) {
+            return 1;
+        }
+        return countPaths(start.goEast(), end) + countPaths(start.goNorth(), end);
 
     }
 
